@@ -1,17 +1,88 @@
 <ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-    </ion-list>
-  </ion-content>
+
+    <ion-content>
+        <div class="menu-logo avatar-fullname">
+            <ion-thumbnail item-left>
+                <ion-icon class="image-avatar" name="md-person"></ion-icon>
+            </ion-thumbnail>
+
+            <div class="menu-full-name">
+                <div class="userName">Сергей Иванов</div>
+                <div class="userTelephone">099-999-99-99
+                    <ion-icon name="ios-arrow-down" (click)="edit()" *ngIf="!viewEdit"></ion-icon>
+                    <ion-icon (click)="edit()" *ngIf="viewEdit" name="ios-arrow-up"></ion-icon>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="menu-all-telephons" *ngIf="viewEdit">
+            <div class="userTelephone">
+                <span *ngIf="!changeNumber">099-999-99-99
+                    <ion-icon name="md-create" id="changeNumber" (click)="setNumber()"></ion-icon>
+                </span>
+        <span *ngIf="changeNumber">
+`           <ion-list inset class="changeTelephoneNumber">
+                <ion-item>
+                    <ion-input type="text" #num placeholder="Телефон"></ion-input>
+                         <button ion-button item-right (click)="saveNumberChange(num)" class="changeBtn">
+                            <ion-icon class="done" name="md-checkmark-circle"></ion-icon>
+                         </button>
+                </ion-item>
+            </ion-list>
+        </span>
+            </div>
+            <div>
+                <ion-list inset class="settingsList">
+                    <!--start change name-->
+                    <ion-item *ngIf="!changeName">
+                        <ion-icon name="md-create" item-start (click)="setName()"></ion-icon>
+                        Изменить имя
+                    </ion-item>
+                    <ion-item *ngIf="changeName">
+                        <ion-input type="text" #name placeholder="Имя"></ion-input>
+                        <button ion-button item-right (click)="setName(name)" class="changeBtn">
+                            <ion-icon class="done" name="md-checkmark-circle"></ion-icon>
+                        </button>
+                    </ion-item>
+                    <!--end change name-->
+                    <!--start add telephone-->
+                    <ion-item *ngIf="!addTel">
+                        <ion-icon name="md-call" item-start class="iconTel" (click)="setTelephone()"><span class="addTelPlus">+</span></ion-icon>
+                        Добавить телефон
+                    </ion-item>
+                    <ion-item *ngIf="addTel">
+                        <ion-input type="text" #tel placeholder="Телефон"></ion-input>
+                        <button ion-button item-right (click)="saveNewTelephone(tel)" class="changeBtn">
+                            <ion-icon class="done" name="md-checkmark-circle"></ion-icon>
+                        </button>
+                    </ion-item>
+                    <!--end add telephone-->
+                    <ion-item>
+                        <ion-icon name="md-camera" item-start></ion-icon>
+                        Сделать новое фото
+                    </ion-item>
+                    <ion-item>
+                        <ion-icon name="md-images" item-start></ion-icon>
+                        Выбрать из галереи
+                    </ion-item>
+                    <ion-item>
+                        <ion-icon name="md-trash" item-start></ion-icon>
+                        Удалить фото
+                    </ion-item>
+                </ion-list>
+            </div>
+        </div>
+        <ion-list *ngIf="!viewEdit">
+            <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+                <ion-icon item-left [name]="p.icon" [color]="light" [ngClass]="p.class"><span
+                        *ngIf="p.title === 'Событие'" class="event">.</span></ion-icon>
+                {{p.title}}
+            </button>
+        </ion-list>
+
+    </ion-content>
 
 </ion-menu>
 

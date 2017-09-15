@@ -1,0 +1,53 @@
+<ion-header>
+    <ion-navbar>
+        <button menuToggle ion-button>
+            <ion-icon name="menu" ></ion-icon>
+        </button>
+        <ion-title>Создать событие</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+
+<ion-content>
+    <ion-list>
+        <ion-item>Загрузить картинку <ion-icon name="md-images" item-end></ion-icon></ion-item>
+        <ion-item>
+            <ion-input type="text" #name placeholder="Название мероприятия"></ion-input></ion-item>
+        <ion-item>Место проведения
+            <ion-input type="text" #location placeholder="Место проведения"></ion-input>
+            <ion-icon name="pin" class="location" item-end></ion-icon>
+        </ion-item>
+        <ion-item>Время проведения</ion-item>
+        <ion-item>Участники
+            <ion-icon name="ios-arrow-down" (click)="players()" *ngIf="!viewPlayers" item-end></ion-icon>
+            <ion-icon (click)="players()" *ngIf="viewPlayers" name="ios-arrow-up" item-end></ion-icon>
+        </ion-item>
+        <ion-item *ngIf="viewPlayers">Основной состав</ion-item>
+        <ion-item *ngIf="viewPlayers">Запасной состав</ion-item>
+        <ion-item>Буду участвовать
+            <ion-icon name="ios-arrow-down" (click)="participants()" *ngIf="!viewParticipants" item-end></ion-icon>
+            <ion-icon (click)="participants()" *ngIf="viewParticipants" name="ios-arrow-up" item-end></ion-icon>
+        </ion-item>
+        <ion-item *ngIf="viewParticipants">Не буду участвовать</ion-item>
+        <ion-item *ngIf="viewParticipants">Еще не определился</ion-item>
+        <ion-item><ion-input type="text" #name placeholder="Со мной идут (число цифрами)"></ion-input></ion-item>
+        <ion-item><ion-input type="text" #name placeholder="Требуемое колличество участников"></ion-input></ion-item>
+        <ion-item>Недобор или избыток участников
+            <ion-icon name="ios-arrow-down" (click)="shortage()" *ngIf="!viewShortage" item-end></ion-icon>
+            <ion-icon (click)="shortage()" *ngIf="viewShortage" name="ios-arrow-up" item-end></ion-icon>
+        </ion-item>
+        <ion-item *ngIf="viewShortage" text-wrap>
+            <ion-label>Автоматически закрывать регистрацию после того, как набрано требуемое колличество участников.</ion-label>
+            <ion-checkbox item-right secondary checked="false" ></ion-checkbox>
+        </ion-item>
+        <ion-item *ngIf="viewShortage" text-wrap>
+            <ion-label>Автоматически отсылать приглашения участникам из запасного состава в случае недобора.</ion-label>
+            <ion-checkbox item-right secondary checked="false" ></ion-checkbox>
+        </ion-item>
+        <ion-item><ion-input type="text" #name placeholder="Примечания для участников"></ion-input></ion-item>
+        <button ion-button block class="createBtn" (click)="showCheckbox()">Создать</button>
+
+
+    </ion-list>
+</ion-content>

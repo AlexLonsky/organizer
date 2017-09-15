@@ -1,0 +1,22 @@
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Ваш номер</ion-label>
+      <ion-input [(ngModel)]="userName" type="text" value=""></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Пароль</ion-label>
+      <ion-input [(ngModel)]="password"  type="password" value=""></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <div padding>
+    <button primary block  (click)="login()">Вход</button>
+    <br>
+    <a href="">Регистрация</a>
+  </div>
+</ion-content>

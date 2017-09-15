@@ -1,16 +1,111 @@
-// http://ionicframework.com/docs/theming/
 
 
-// App Global Sass
-// --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
-//
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
-//
-// To declare rules for a specific mode, create a child rule
-// for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
+.menu-logo.avatar-fullname {
+  background: rgb(66, 66, 66);
+  height: 24%;
+}
+.menu-all-telephons{
+  //background: rgb(66, 66, 66);
+  //height: 11%;
+  margin-top: -2px;
+}
+.menu-all-telephons .userTelephone{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 3px 0 0 0;
+  background: rgb(66, 66, 66);
+  padding-left: 16px;
+}
+
+.image-avatar {
+  min-width: 60px;
+  min-height: 60px;
+  border-radius: 50px;
+  font-size: 50px;
+  background: #e0e0e0;
+  text-align: center;
+  padding-top: 3px;
+  color: cornsilk;
+  margin: 15px 0px 0 15px;
+}
+.userName{
+  color: #fff;
+  margin: 16px 0 0 16px;
+  font-size: 15px;
+}
+.userTelephone{
+  margin: 3px 0 0 16px;
+  font-size: 14px;
+  color: #bdbdbd;
+
+}
+.userTelephone ion-icon{
+  color: #fff;
+  font-size: 26px;
+  vertical-align: sub;
+  padding-left: 12px;
+
+}
+.event{
+  color: #00a9ff;
+  font-size: 30px
+}
+.calendar{
+  color: #2fbb2f;
+  font-size: 30px
+}
+.groups{
+  color: #c8ff2f;
+  font-size: 30px
+}
+.settings{
+  color: #00b4ff;
+  font-size: 30px
+}
+.exit{
+  color: darkcyan;
+  font-weight: 900;
+  font-size: 30px
+}
+#changeNumber{
+  font-size: 20px;
+  vertical-align: baseline;
+}
+ion-list.changeTelephoneNumber.list.list-md {
+  margin: 0 16px 0 0
+}
+.changeBtn{
+  box-shadow: none ;
+  background-color: #fff !important;
+}
+.done{
+  color: #0091ff !important;
+  font-size: 29px !important;
+}
+.addTelPlus{
+  font-weight: bolder;
+  vertical-align: super !important;
+  position: relative !important;
+  right: 9px !important;
+  font-size: 20px !important;
+}
+.iconTel{
+  margin-right: 0!important;
+}
+.settingsList{
+  margin: 0 !important;
+}
+.settingsList .changeBtn{
+  margin: 0 24px 0 0;
+}
+.toolbar-background-md {
+  border-color: #b2b2b2;
+  background: #f8f8f8;
+  background-color: rgb(17, 187, 17);
+}
+.toolbar-title-md{
+  color: #fff;
+}
+.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default{
+  color: #fff;
+}

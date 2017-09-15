@@ -1,0 +1,113 @@
+page-event {
+.counterPeople{
+  background: rgba(0, 0, 0, 0.5);
+  width: 83%;
+  height: 12em;
+  position: absolute;
+  top: 39px;
+  color: #fff;
+  right: 34px;
+  border-radius: 1%;
+  text-align: center;
+}
+  img{
+    height: 16em;
+  }
+
+  .counterPeople ion-item table{
+    width: 100%;
+    z-index: 9;
+    font-weight: 800;
+
+  }
+  .counterPeople ion-item table .text{
+    text-transform: uppercase;
+    font-size: 10px;
+  }
+  .counterPeople ion-item table .number{
+    font-weight: 100;
+    font-size: 45px;
+  }
+  .counterPeople ion-item table .number .go{
+    color: #40f50a;
+  }
+  .counterPeople ion-item table .number .waiting{
+    color: #cda032;
+  }
+  .counterPeople ion-item table .number .not-go{
+    color: #ff1c00;
+  }
+  .counterPeople p{
+    color: #fff;
+    text-align: center;
+    font-weight: 900;
+    font-size: 18px;
+
+  }
+  hr{
+    border-bottom: 1px solid rgba(157, 157, 157, 0.51);
+    margin-top: 0;
+    width: 90%;
+  }
+  .counterPeople ion-item{
+    background-color: rgba(240, 248, 255, 0);
+    color: #fff;
+    text-align: center;
+  }
+
+
+  ion-card-content{
+    padding-top: 0 !important;
+  }
+
+  ion-card-title{
+  padding: 0!important;
+    margin-top: 0px !important;
+  }
+  ion-card-title .label-md{
+  margin: 0!important;
+    padding-left: 0!important;
+  }
+  ion-card-title .item-md{
+    padding-left: 0!important;
+  }
+  ion-card-title ion-badge{
+    padding: 0px !important;
+    color: red !important;
+    background-color: #fff !important;
+    font-size: 14px;
+    position: relative;
+    top: -11px;
+    right: 12px;
+  }
+  ion-card-title ion-item{
+    height: 30px;
+  }
+  .location{
+    font-size: 27px;
+    color: rgba(66, 66, 66, 0.74);
+  }
+  .answerDone{
+    color: #39bb08;
+    font-size: 35px;
+    position: relative;
+    top: -4px;
+  }
+  .newMessage{
+    font-size: 27px;
+    color: rgba(66, 66, 66, 0.74);
+    padding-left: 22px;
+  }
+  .whenEvent{
+    font-weight: 800;
+    font-size: 16px;
+  }
+
+  .initiator{
+    text-align: right;
+  }
+  ion-fab{
+    bottom: 0!important;
+  }
+
+}

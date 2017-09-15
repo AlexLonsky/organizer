@@ -1,0 +1,35 @@
+page-createEvent{
+
+.createBtn{
+  width: 94%;
+  margin: 30px auto;
+}
+
+}
+.alert{
+
+  h2{
+    color: #00a9ff;
+    font-size: 1.4em !important;
+  }
+  h3#alert-subhdr-0 {
+    font-size: 14px;
+    text-align: center;
+    border-bottom: 1px solid rgba(169, 169, 169, 0.4);
+    padding-bottom: 15px;
+  }
+  .alert-md .alert-message {
+    max-height: 240px;
+    font-size: 13px;
+    padding: 0 24px 15px 24px;
+  }
+  .alert-checkbox-label {
+    white-space: pre-wrap;
+  }
+  div#alert-msg-0 {
+    text-align: left;
+  }
+  .alert-checkbox-group {
+    border-top: 0px solid rgba(255, 255, 255, 0) !important;
+  }
+}
