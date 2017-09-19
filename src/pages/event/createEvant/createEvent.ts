@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
-import {Event} from '../event'
+import { NavController, NavParams, AlertController} from 'ionic-angular';
+import {EventPage} from '../event'
+import {GlobalService} from '../../../services/global.services'
+import { PopoverController } from 'ionic-angular';
+import {ModalTimeEvent} from './modal-time-event/modal-time-event'
+
 
 @Component({
     selector: 'page-createEvent',
@@ -12,10 +16,12 @@ export class CreateEventPage {
     public viewShortage: boolean = false;
 
     constructor(public navCtrl: NavController,
-                public alertCtrl: AlertController) {
+                public alertCtrl: AlertController,
+                public globalService: GlobalService           
+    ) {
 
     }
-    players(){
+    players() {
         this.viewPlayers = this.viewPlayers? false: true;
     }
     participants() {
@@ -38,7 +44,12 @@ export class CreateEventPage {
             checked: false
         });
         alert.present();
-        this.navCtrl.setRoot(Event);
+        this.navCtrl.setRoot(EventPage);
+    }
+    eventDate() {
+        // this.navCtrl.setRoot(ModalTimeEvent)
+        this.navCtrl.push(ModalTimeEvent);
+        console.log(111111);
     }
     
 

@@ -18,7 +18,7 @@
             <ion-input type="text" #location placeholder="Место проведения"></ion-input>
             <ion-icon name="pin" class="location" item-end></ion-icon>
         </ion-item>
-        <ion-item>Время проведения</ion-item>
+        <ion-item (click)="eventDate('ModalTimeEvent')">Время проведения</ion-item>
         <ion-item>Участники
             <ion-icon name="ios-arrow-down" (click)="players()" *ngIf="!viewPlayers" item-end></ion-icon>
             <ion-icon (click)="players()" *ngIf="viewPlayers" name="ios-arrow-up" item-end></ion-icon>

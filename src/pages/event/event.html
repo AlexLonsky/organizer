@@ -28,7 +28,10 @@
         <img src="../../assets/football.jpg"/>
         <ion-list class="counterPeople">
             <ion-item>
-                <p>Мини-футбол</p> <ion-icon name="md-more" item-right></ion-icon>
+
+                <p>Мини-футбол</p>
+                    <ion-icon name="md-more" item-right (click)="presentPopover($event)"></ion-icon>
+
                 </ion-item>
             <hr>
             <ion-item>
@@ -40,9 +43,9 @@
                         <td>Вопрос</td>
                     </tr>
                     <tr class="number">
-                        <td class="go">10</td>
-                        <td class="not-go">02</td>
-                        <td class="waiting">05</td>
+                        <td class="go" (click)="go()">10</td>
+                        <td class="not-go" (click)="notGo()">02</td>
+                        <td class="waiting" (click)="waiting()">05</td>
                     </tr>
                 </table>
 
@@ -54,10 +57,10 @@
             <ion-card-title>
                 <ion-item>
                     <ion-icon name="pin" class="location"></ion-icon>
-                    <ion-icon name="text" class="newMessage">
+                    <ion-icon name="text" class="newMessage" (click)="notificationsWindow($event)">
                         <ion-badge item-end>9</ion-badge>
                     </ion-icon>
-                    <ion-icon name="checkmark" class="answerDone" item-right></ion-icon>
+                    <ion-icon name="checkmark" class="answerDone" item-right (click)="participateCheck($event)"></ion-icon>
                 </ion-item>
             </ion-card-title>
             <p class="whenEvent">

@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-navbar>
+        <button menuToggle ion-button>
+            <ion-icon name="menu" ></ion-icon>
+        </button>
+        <ion-title>Время проведения</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+<ion-list>
+    <ion-item>
+        <ion-label> Задать дату и время</ion-label>
+        <ion-datetime displayFormat="MM-DD-YYYY h:mm A"  ></ion-datetime>
+       </ion-item>
+    <ion-item>Повторяемость события
+        <ion-icon name="ios-arrow-down" (click)="repetitionEvent()" *ngIf="!viewRepetitionEvent"></ion-icon>
+        <ion-icon (click)="repetitionEvent()" *ngIf="viewRepetitionEvent" name="ios-arrow-up"></ion-icon>
+    </ion-item>
+    <ion-item *ngIf="viewRepetitionEvent">
+        <ion-label>Повторяется</ion-label>
+        <ion-select>
+            <ion-option value="nes">Каждую неделю</ion-option>
+            <ion-option value="n64">Каждую вторую неделю</ion-option>
+            <ion-option value="ps">Каждую третью неделю</ion-option>
+            <ion-option value="genesis">Каждую четвертую неделю</ion-option>
+            <ion-option value="saturn">Ежемесячно</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item *ngIf="viewRepetitionEvent" (click)="repetitionDays()">Дни повторения</ion-item>
+    <ion-item *ngIf="viewRepetitionEvent">
+        <ion-label>Окончание</ion-label>
+        <ion-datetime displayFormat="MM-DD-YYYY h:mm A"></ion-datetime>
+        </ion-item>
+</ion-list>
+</ion-content>

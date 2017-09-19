@@ -7,9 +7,20 @@ import { LoginPage } from '../pages/login/login';
 import { ListPage } from '../pages/list/list';
 import { EventPage } from '../pages/event/event';
 import { CreateEventPage } from '../pages/event/createEvant/createEvent';
+import { ModalTimeEvent } from '../pages/event/createEvant/modal-time-event/modal-time-event';
+import { MyPopOverPage } from '../pages/event/my-pop-over/my-pop-over';
+import { ParticipatePage } from '../pages/event/participate/participate';
+import { GoPage } from '../pages/event/go/go';
+import { NotGoPage } from '../pages/event/not-go/not-go';
+import { WaitingPage } from '../pages/event/waiting/waiting';
+
+import { NotificationsPage } from '../pages/event/notifications/notifications';
 import { CalendarPage } from '../pages/calendar/calendar';
 import { GroupsPage } from '../pages/groups/groups';
 import { SettingsPage } from '../pages/settings/settings';
+
+
+import { GlobalService } from '../services/global.services';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -23,11 +34,22 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     CalendarPage,
     GroupsPage,
     SettingsPage,
-    CreateEventPage
+    CreateEventPage,
+    MyPopOverPage,
+    ParticipatePage,
+    GoPage,
+    NotGoPage,
+    WaitingPage,
+    NotificationsPage,
+    ModalTimeEvent
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{
+      backButtonText: '',
+      backButtonIcon: 'md-arrow-back',
+      iconMode: 'md'
+    }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -38,12 +60,20 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     CalendarPage,
     GroupsPage,
     SettingsPage,
-    CreateEventPage
+    CreateEventPage,
+    MyPopOverPage,
+    GoPage,
+    NotGoPage,
+    WaitingPage,
+    ParticipatePage,
+    NotificationsPage,
+    ModalTimeEvent
 
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    GlobalService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -1,3 +1,26 @@
 page-login {
 
+  .wrapperLogo{
+    text-align: center;
+    width: 100%;
+    margin-top: 20%;
+  }
+  .logo{
+    width: 100%;
+  }
+  .scroll-content {
+    background: #e0e0e0;
+  }
+  .registForm{
+    background: #e0e0e0;
+  }
+  .registForm ion-item{
+    background-color: #e0e0e0;
+    //border-bottom: 1px solid #5c5c5c;
+  }
+  .text-input{
+    border-bottom: 1px solid #b7b5b5;
+    padding-bottom: 6px;
+  }
+
 }
