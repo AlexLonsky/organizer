@@ -3,13 +3,21 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { GlobalService } from '../services/global.services';
 import { LoginPage } from '../pages/login/login';
+import { RegistrationPage } from '../pages/registration/registration';
 import { ListPage } from '../pages/list/list';
 import { EventPage } from '../pages/event/event';
 import { CalendarPage } from '../pages/calendar/calendar';
 import { GroupsPage } from '../pages/groups/groups';
 import { SettingsPage } from '../pages/settings/settings';
 
+import {Storage} from '@ionic/storage';
+
+
+
+import {FCM} from '@ionic-native/fcm';
+import {Device} from '@ionic-native/device';
 
 
 export interface PageInterface {
@@ -23,19 +31,30 @@ export interface PageInterface {
 }
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [FCM]
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any;
   pages: PageInterface[];
   public viewEdit: boolean = false;
   public changeNumber: boolean = false;
   public changeName: boolean = false;
   public addTel: boolean = false;
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
-    this.initializeApp();
+  constructor(public platform: Platform, 
+              public statusBar: StatusBar,
+              public splashScreen: SplashScreen,
+              private fcm: FCM,
+              public globalService: GlobalService,
+              public device: Device,
+              public storage: Storage) {
+
+
+        this.initializeApp();
+
+
 
     this.pages = [
       { title: 'Событие', component: EventPage, icon: 'md-walk', class: 'event'},
@@ -46,15 +65,32 @@ export class MyApp {
     ];
 
   }
-
+  
   initializeApp() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      this.storage.get('userToken').then((val) => {
+        if (val) {
+          this.rootPage = EventPage;
+        }
+        else {
+          this.rootPage = RegistrationPage;
+            var deviceUuid = this.device.uuid ? this.device.uuid : '';
+            let deviceData = {
+              uuid: deviceUuid,
+            };
+
+            this.storage.set('DeviceData', deviceData).then(() =>{
+            });
+
+        }
+      });
+
+
+
+
     });
   }
+  
   edit(){
     this.viewEdit = this.viewEdit? false: true;
   }
@@ -64,7 +100,6 @@ export class MyApp {
   saveNumberChange(number){
     this.changeNumber = false;
     console.log('save change')
-    console.log(number.value)
   }
   setName(name){
     this.changeName = this.changeName ? false : true;
@@ -74,11 +109,11 @@ export class MyApp {
   }
   saveNewTelephone(tel) {
     this.addTel = false;
-    console.log(tel)
   }
   openPage(page) {
     if (page.logsOut === true) {
       console.log('logout');
+      this.storage.remove('userToken');
       this.nav.setRoot(LoginPage);
       return;
     }

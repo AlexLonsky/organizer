@@ -1,51 +1,22 @@
 
 <ion-content padding>
+  <p class="signUp"><span (click)="goToRegistration()">Регистрация</span></p>
   <div padding class="wrapperLogo" >
     <img src="../../assets/logo.png" alt="" class="logo">
 
   </div>
-
-  <!--<ion-list no-lines>-->
-    <!--<div class="all-input-sign">-->
-      <!--<div class="all-inputs">-->
-        <!--<ion-item class="centre-form">-->
-          <!--<ion-input    name="phoneNumber" minlength="10" ></ion-input>-->
-        <!--</ion-item>-->
-
-        <!--<ion-item class="centre-form">-->
-          <!--<ion-input type="password"  name="password" ></ion-input>-->
-        <!--</ion-item>-->
-      <!--</div>-->
-    <!--</div>-->
-
-    <!--<ion-buttons bottom>-->
-      <!--<button class="login-button my-login-btn" ion-button type="submit" block >Вход</button>-->
-    <!--</ion-buttons>-->
-  <!--</ion-list>-->
-
-
   <ion-list no-lines class="registForm">
-
     <ion-item>
       <ion-label floating>Ваш номер</ion-label>
-      <ion-input [(ngModel)]="userName" type="text" value=""></ion-input>
+      <ion-input [(ngModel)]="phoneNumber" type="text" value=""></ion-input>
     </ion-item>
-
-    <ion-item>
-      <ion-label floating>Пароль</ion-label>
-      <ion-input [(ngModel)]="password"  type="password" value=""></ion-input>
-    </ion-item>
-
   </ion-list>
 
   <div padding>
     <div>
       <button ion-button full (click)="login()">Вход</button>
-
     </div>
 
-    <br>
-    <div icon-end><a href="" icon-end="">Регистрация</a></div>
 
   </div>
 </ion-content>

@@ -1,26 +1,28 @@
 page-login {
 
-  .wrapperLogo{
+  .wrapperLogo {
     text-align: center;
     width: 100%;
     margin-top: 20%;
   }
-  .logo{
+  .logo {
     width: 100%;
   }
-  .scroll-content {
-    background: #e0e0e0;
-  }
-  .registForm{
-    background: #e0e0e0;
-  }
-  .registForm ion-item{
-    background-color: #e0e0e0;
-    //border-bottom: 1px solid #5c5c5c;
-  }
-  .text-input{
+
+  .text-input {
     border-bottom: 1px solid #b7b5b5;
     padding-bottom: 6px;
   }
+  .list-md .item-input:last-child {
+    border-bottom: 0px solid #dedede;
+  }
 
+  .signUp {
+    position: absolute;
+    top: 0;
+    right: 21px;
+    font-size: 1.4em;
+    color: #00ffa5;
+  }
 }
+

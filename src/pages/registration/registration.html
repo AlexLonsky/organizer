@@ -1,0 +1,59 @@
+<ion-content padding>
+    <div *ngIf="next === 1" class="firstView">
+        <p class="signUp" (click)="signUp()"><span >Войти</span></p>
+        <h2>Спасибо, что загрузили</h2>
+        <div padding class="wrapperLogo" >
+            <img src="../../assets/logo.png" alt="" class="logo">
+
+        </div>
+        <div>
+            <p><a href="#">Условия использования</a> и <br> <a href="#">Положение о конфиденциальности</a></p>
+            <ion-item no-lines>
+                <ion-label>Да, прочитал и принимаю</ion-label>
+                <ion-checkbox color="dark"  (ionChange)="consentCheck($event)"></ion-checkbox>
+            </ion-item>
+            <button ion-button color="light"  icon-end (click)="nextView()" [disabled]="!consent">
+                Далее
+                <ion-icon name='ios-arrow-forward' class="arrow"></ion-icon>
+            </button>
+        </div>
+    </div>
+    <div *ngIf="next === 2" class="firstView">
+        <h2>Приветствуем Вас!</h2>
+        <p>
+            Для начала работы с приложением, <br>
+            <b class="styleText">пожалуйста, введи ваш номер телефона</b>
+        </p>
+        <ion-item>
+            <ion-label floating>Ваш номер</ion-label>
+            <ion-input [ngModel]="phoneNumber" maxlength="9" type="text" required pattern="[0-9]{9}" #number (keyup)="activateBtn($event)"></ion-input>
+        </ion-item>
+        <button ion-button color="light" icon-end (click)="nextView(number)" [disabled]="!nextTelephone">
+            Далее
+            <ion-icon name='ios-arrow-forward' class="arrow"></ion-icon>
+        </button>
+    </div>
+    <div *ngIf="next === 3" class="firstView">
+        <h2>Настройте профиль</h2>
+        <div>
+            <ion-icon class="image-avatar" name="md-person"></ion-icon>
+        </div>
+
+        <ion-item>
+            <ion-label floating>Имя</ion-label>
+            <ion-input   type="text"  #name></ion-input>
+        </ion-item>
+
+        <!--<button ion-button color="light" icon-end >-->
+            <!--Позже-->
+        <!--</button>-->
+        <button ion-button color="light" icon-end (click)="login(name, password)">
+        Регистрация
+        <ion-icon name='ios-arrow-forward' class="arrow"></ion-icon>
+    </button>
+    </div>
+
+
+
+
+</ion-content>

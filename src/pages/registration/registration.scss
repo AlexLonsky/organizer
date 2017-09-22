@@ -1,0 +1,49 @@
+
+page-registration{
+
+  .firstView {
+    margin-top: 22%;
+    text-align: center;
+  }
+  .signUp{
+    position: absolute;
+    top: 0;
+    right: 21px;
+    font-size: 1.4em;
+    color: #00ffa5;
+  }
+  h2 {
+    color: #908585;
+    font-weight: 900;
+    font-size: 2.8rem;
+  }
+  p{
+    margin-top: 12%;
+    font-size: 1.4em;
+  }
+  ion-item{
+    padding-left: 14% !important;
+  }
+  button{
+    margin-top: 10% !important;
+    box-shadow: 0 0 0 !important;
+    font-size: 1.4em !important;
+  }
+  .arrow{
+    color: #488aff !important;
+  }
+  .styleText{
+    color: rgb(100, 206, 193);
+  }
+  .image-avatar {
+    min-width: 130px;
+    min-height: 130px;
+    border-radius: 50%;
+    font-size: 110px;
+    background: #e0e0e0;
+    text-align: center;
+    padding-top: 3px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 15px 0px 0 15px;
+  }
+}

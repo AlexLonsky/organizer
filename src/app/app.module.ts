@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import {HttpModule, Http} from '@angular/http';
 
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
+import { RegistrationPage } from '../pages/registration/registration';
 import { ListPage } from '../pages/list/list';
 import { EventPage } from '../pages/event/event';
 import { CreateEventPage } from '../pages/event/createEvant/createEvent';
@@ -21,14 +23,24 @@ import { SettingsPage } from '../pages/settings/settings';
 
 
 import { GlobalService } from '../services/global.services';
+import {IonicStorageModule} from '@ionic/storage';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+
+
+//Plugin
+import {FCM} from '@ionic-native/fcm';
+import {Device} from '@ionic-native/device';
+
 
 @NgModule({
   declarations: [
     MyApp,
     LoginPage,
+    RegistrationPage,
     ListPage,
     EventPage,
     CalendarPage,
@@ -45,6 +57,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp,{
       backButtonText: '',
       backButtonIcon: 'md-arrow-back',
@@ -55,6 +69,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     LoginPage,
+    RegistrationPage,
     ListPage,
     EventPage,
     CalendarPage,
@@ -74,6 +89,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     GlobalService,
+    FCM,
+    Device,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
