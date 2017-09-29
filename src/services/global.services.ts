@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 
 import {Http, Response, Headers, RequestOptions} from '@angular/http';
+import {Storage} from '@ionic/storage';
+
 
 import {Observable} from 'rxjs/Observable';
 
@@ -13,32 +15,47 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class GlobalService {
     public apiUrl: string = 'http://sportevent.hm/';
+    public userInfo: any;
+    public timeEvent: any;
 
-    constructor(public http: Http) {
+    constructor(public http: Http,
+                public storage: Storage) {
+        
     }
    
     
 
     httpRequestPost(data, url: string) {
-        data = JSON.stringify(data);
-        let headers = new Headers({'Content-Type': 'application/json'});
-        let options = new RequestOptions({headers: headers});
-        let results = this.http.post(this.apiUrl + url, data, options)
-            .toPromise()
-            .then(this.extractData)
-            .catch((error)=>{
-                console.log(error)
-            });
-        return results.then((response: any) => {
-                    console.log(results);
-            if (response && response.status == 'error_token') {
-                // this.storage.remove('token').then(() => {
-                //     this.app.getRootNav().setRoot(Login);
-                // });
+
+        return this.storage.get('userToken').then((val) => {
+            if (val) {
+                console.log(val)
+                data.auth_token =  val
             }
-            return results;
-        }).catch((error: any) => {
-            return error;
+            console.log(data);
+            data = JSON.stringify(data);
+            console.log(data);
+            let headers = new Headers({'Content-Type': 'application/json'});
+            let options = new RequestOptions({headers: headers});
+            let results = this.http.post(this.apiUrl + url, data, options)
+                .toPromise()
+                .then(this.extractData)
+                .catch((error)=>{
+                    console.log(error)
+                });
+            return results.then((response: any) => {
+                console.log(results);
+                if (response && response.status == 'error_token') {
+                    // this.storage.remove('token').then(() => {
+                    //     this.app.getRootNav().setRoot(Login);
+                    // });
+                }
+                return results;
+            }).catch((error: any) => {
+                return error;
+            });
+
+
         });
 
     }

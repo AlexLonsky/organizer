@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-navbar>
+        <button menuToggle ion-button>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+
+        <ion-title>Создание группы</ion-title>
+
+        <ion-buttons end>
+            <button ion-button (click)="saveNewGroup()">
+                Ok
+            </button>
+        </ion-buttons>
+
+        <ion-buttons end>
+            <button ion-button icon-only (click)="cleanField()">
+                <ion-icon name="ios-trash-outline"></ion-icon>
+            </button>
+        </ion-buttons>
+
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+    <ion-list>
+        <ion-item>
+            <ion-input type="text" placeholder="Название группы" name="nameGroup" [(ngModel)]="newGroup.nameGroup" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="md-images" item-end></ion-icon>
+            Загрузить иконку
+        </ion-item>
+        <ion-item>
+            <ion-icon name="person-add" item-end (click)="selectUsers()"></ion-icon>
+            Добавить участников
+        </ion-item>
+
+
+    </ion-list>
+
+</ion-content>

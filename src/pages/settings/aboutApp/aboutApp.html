@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-navbar>
+        <button menuToggle ion-button>
+            <ion-icon name="menu" ></ion-icon>
+
+        </button>
+        <ion-title>Настройки</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <div  class="main-view">
+        <div class="overlay"></div>
+        <div class="modal_content">
+            <h2 align="center" class="about">О приложении</h2>
+            <h1 class="nameApp">Sport Game Organizer</h1>
+            <p class="updateVersion"><span>Версия 1.1</span> <a href="#">ОБновить</a></p>
+            <p class="development"><small>Разработчик <a href="#">"1Webdev Team"</a></small></p>
+            <p class="forPeople" padding>Приложение преднозначено для координации действий участников спортивных игр.</p>
+            <p><a href="#">Условия использования</a></p>
+            <p ><a href="#">Положение о конфиденциальности</a></p>
+
+            <ion-buttons >
+                <button ion-button  full color="danger"(click)="closeModal()">Ок</button>
+            </ion-buttons>
+        </div>
+    </div>
+</ion-content>

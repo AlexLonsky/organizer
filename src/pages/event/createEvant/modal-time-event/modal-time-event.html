@@ -11,7 +11,7 @@
 <ion-list>
     <ion-item>
         <ion-label> Задать дату и время</ion-label>
-        <ion-datetime displayFormat="MM-DD-YYYY h:mm A"  ></ion-datetime>
+        <ion-datetime displayFormat="MM-DD-YYYY h:mm "  name="date_start" [(ngModel)]="date_start" ></ion-datetime>
        </ion-item>
     <ion-item>Повторяемость события
         <ion-icon name="ios-arrow-down" (click)="repetitionEvent()" *ngIf="!viewRepetitionEvent"></ion-icon>
@@ -19,18 +19,19 @@
     </ion-item>
     <ion-item *ngIf="viewRepetitionEvent">
         <ion-label>Повторяется</ion-label>
-        <ion-select>
-            <ion-option value="nes">Каждую неделю</ion-option>
-            <ion-option value="n64">Каждую вторую неделю</ion-option>
-            <ion-option value="ps">Каждую третью неделю</ion-option>
-            <ion-option value="genesis">Каждую четвертую неделю</ion-option>
-            <ion-option value="saturn">Ежемесячно</ion-option>
+        <ion-select name="eventRepeat" #eventRepeat value="eventRepeat" [(ngModel)]="repetition">
+            <ion-option value="Каждую неделю">Каждую неделю</ion-option>
+            <ion-option value="Каждую вторую неделю">Каждую вторую неделю</ion-option>
+            <ion-option value="Каждую третью неделю">Каждую третью неделю</ion-option>
+            <ion-option value="Каждую четвертую неделю">Каждую четвертую неделю</ion-option>
+            <ion-option value="Ежемесячно">Ежемесячно</ion-option>
         </ion-select>
     </ion-item>
     <ion-item *ngIf="viewRepetitionEvent" (click)="repetitionDays()">Дни повторения</ion-item>
     <ion-item *ngIf="viewRepetitionEvent">
         <ion-label>Окончание</ion-label>
-        <ion-datetime displayFormat="MM-DD-YYYY h:mm A"></ion-datetime>
+        <ion-datetime displayFormat="MM-DD-YYYY h:mm "  name="date_end" [(ngModel)]="date_end"></ion-datetime>
         </ion-item>
+    <button ion-button block class="createBtn" (click)="saveDate()">Сохранить</button>
 </ion-list>
 </ion-content>

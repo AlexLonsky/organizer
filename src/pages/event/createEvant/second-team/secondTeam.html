@@ -1,0 +1,52 @@
+<ion-header>
+    <ion-navbar>
+        <button menuToggle ion-button>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+
+        <span>Выбрано: </span>
+
+        <ion-buttons end>
+            <button ion-button >
+                Ok
+            </button>
+        </ion-buttons>
+
+        <ion-buttons end>
+            <button ion-button icon-only (click)="viewSearch()">
+                <ion-icon name="search"></ion-icon>
+            </button>
+        </ion-buttons>
+
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-searchbar (ionInput)="searchContact($event)" *ngIf="showSearch"></ion-searchbar>
+    <div >
+        <ion-segment [(ngModel)]="team">
+            <ion-segment-button value="groups">
+                Группы
+            </ion-segment-button>
+            <ion-segment-button value="contacts">
+                Контакты
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+
+    <div [ngSwitch]="team">
+        <ion-list *ngSwitchCase="'groups'">
+            <ion-item>
+                <ion-label><img src="../../../../assets/football.jpg" class="imgGroups" alt=""><span class="groupName">Баскетбол</span></ion-label>
+                <ion-checkbox color="dark" checked="false" item-right></ion-checkbox>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'contacts'">
+            <ion-item>
+                <ion-label><img src="../../../../assets/football.jpg" class="imgGroups" alt=""><span class="groupName">Василий Алибобаевич</span></ion-label>
+                <ion-checkbox color="dark" checked="false" item-right></ion-checkbox>
+            </ion-item>
+
+        </ion-list>
+    </div>
+</ion-content>

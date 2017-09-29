@@ -1,0 +1,58 @@
+<ion-header>
+    <ion-navbar>
+        <button menuToggle ion-button>
+            <ion-icon name="menu" ></ion-icon>
+
+        </button>
+        <ion-buttons end>
+
+                <ion-toggle checked="true" item-end (ionChange)="viewOptions()"></ion-toggle>
+
+        </ion-buttons>
+        <ion-title>Уведомления</ion-title>
+
+
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list *ngIf="showOptions" no-lines>
+        <ion-item>
+            <ion-label>Показывать в строке состояния</ion-label>
+            <ion-checkbox item-right secondary ></ion-checkbox>
+        </ion-item>
+        <ion-item>
+            <ion-label>Показывать на экране блокировки</ion-label>
+            <ion-checkbox item-right secondary  ></ion-checkbox>
+        </ion-item>
+        <ion-item>
+            Типы уведомлений
+                <ion-icon name="ios-arrow-down" item-end (click)="showTypes()" *ngIf="!viewTypes"></ion-icon>
+                <ion-icon (click)="showTypes()" item-end *ngIf="viewTypes" name="ios-arrow-up"></ion-icon>
+
+        </ion-item>
+       <ion-list *ngIf="viewTypes" no-lines class="secondList">
+           <ion-item>
+               <ion-label>Вас пригласили играть</ion-label>
+               <ion-checkbox item-right secondary ></ion-checkbox>
+           </ion-item>
+           <ion-item>
+               <ion-label>Изменились условия проведения</ion-label>
+               <ion-checkbox item-right secondary ></ion-checkbox>
+           </ion-item>
+           <ion-item>
+               <ion-label>Изменился состав участников</ion-label>
+               <ion-checkbox item-right secondary ></ion-checkbox>
+           </ion-item>
+           <ion-item>
+               <ion-label>Требуемое колличество участников набрано</ion-label>
+               <ion-checkbox item-right secondary ></ion-checkbox>
+           </ion-item>
+           <ion-item>
+               <ion-label>Недобор участников</ion-label>
+               <ion-checkbox item-right secondary ></ion-checkbox>
+           </ion-item>
+       </ion-list>
+    </ion-list>
+
+</ion-content>

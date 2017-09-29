@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, AlertController, Nav } from 'ionic-angular';
+import { NavController, AlertController, Nav, Events } from 'ionic-angular';
 import {EventPage} from '../event/event'
 import {LoginPage} from '../login/login'
 import {GlobalService} from '../../services/global.services'
@@ -18,10 +18,12 @@ export class RegistrationPage {
     public next: number = 1;
     public firsNext: boolean = false;
     public nextTelephone: boolean = false;
+    private uuid: string;
     constructor(public navCtrl: NavController,
                 public globalService: GlobalService,
                 public storage: Storage,
-                public alertCtrl: AlertController) {
+                public alertCtrl: AlertController,
+                public events: Events) {
 
     }
     signUp() {
@@ -29,50 +31,102 @@ export class RegistrationPage {
     }
 
     login(name) {
-        this.userName = name;
+        this.userName = name.value;
         let data: any = {
-            phoneNumber: this.phoneNumber
+            phoneNumber: this.phoneNumber,
+            userName : this.userName
         };
-        this.globalService.httpRequestPost(data, 'api/verifyPhone').then((res) => {
-            if (res.description.status == 'OK' || res.description.exist) {
-                let prompt = this.alertCtrl.create({
-                    message: "Вам отправлен код в смс!",
-                    inputs: [
-                        {
-                            name: 'title',
-                            placeholder: 'Title'
-                        },
-                    ],
-                    buttons: [
-                        {
-                            text: 'Cancel',
-                            handler: data => {
-                                console.log('Cancel clicked');
-                            }
-                        },
-                        {
-                            text: 'Save',
-                            handler: data => {
-                                this.checkCode('123');
-                            }
-                        }
-                    ]
-                });
-                prompt.present();
-            }
+        this.globalService.httpRequestPost(data, 'api/addNewUser').then((res) => {
+            console.log(res.description.auth_token);
+            this.storage.set('userToken', res.description.auth_token).then(( val ) => {
+                this.events.publish('user:created', res.description.auth_token);
+                this.navCtrl.setRoot(EventPage);
+            });
+
+            // if (res || res.description.status == 'OK' || res.description.exist) {
+            //     let prompt = this.alertCtrl.create({
+            //         message: "Вам отправлен код в смс!",
+            //         inputs: [
+            //             {
+            //                 name: 'title',
+            //                 placeholder: 'Title'
+            //             },
+            //         ],
+            //         buttons: [
+            //             {
+            //                 text: 'Cancel',
+            //                 handler: data => {
+            //                     console.log('Cancel clicked');
+            //                 }
+            //             },
+            //             {
+            //                 text: 'Save',
+            //                 handler: data => {
+            //                     this.checkCode('123');
+            //                 }
+            //             }
+            //         ]
+            //     });
+            //     prompt.present();
+            // }
         });
     }
+    // login(name) {
+    //     this.userName = name;
+    //     let data: any = {
+    //         phoneNumber: this.phoneNumber
+    //     };
+    //     this.globalService.httpRequestPost(data, 'api/verifyPhone').then((res) => {
+    //         if (res || res.description.status == 'OK' || res.description.exist) {
+    //             let prompt = this.alertCtrl.create({
+    //                 message: "Вам отправлен код в смс!",
+    //                 inputs: [
+    //                     {
+    //                         name: 'title',
+    //                         placeholder: 'Title'
+    //                     },
+    //                 ],
+    //                 buttons: [
+    //                     {
+    //                         text: 'Cancel',
+    //                         handler: data => {
+    //                             console.log('Cancel clicked');
+    //                         }
+    //                     },
+    //                     {
+    //                         text: 'Save',
+    //                         handler: data => {
+    //                             this.checkCode('123');
+    //                         }
+    //                     }
+    //                 ]
+    //             });
+    //             prompt.present();
+    //         }
+    //     });
+    // }
     checkCode(code) {
+        if(code) {
+
+            this.storage.get('DeviceData').then((val) => {
+                this.uuid = val.uuid;
+            })
+        }
+        else {
+            return;
+        }
         let data = {
             "phoneNumber": this.phoneNumber,
-            "deviceToken": "string",
+            "deviceToken": this.uuid ? this.uuid : '1',
             "code": code
         };
         this.globalService.httpRequestPost(data, 'api/checkCode').then((res) => {
-            if(res.description.status =="OK") {
-                this.navCtrl.setRoot(EventPage);
+            if(res || res.description || res.description.status =="OK") {
+                
                     var userToken = {token: res.description.auth_token};
-                    this.storage.set('userToken', userToken).then(() => {
+                    this.storage.set('userToken', userToken).then(( val ) => {
+                        this.events.publish('user:created', res.description);
+                        this.navCtrl.setRoot(EventPage);
                     });
             }
         })

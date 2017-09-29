@@ -6,6 +6,10 @@ import { NotGoPage } from './not-go/not-go';
 import { WaitingPage } from './waiting/waiting';
 import { ParticipatePage } from './participate/participate';
 import { NotificationsPage} from './notifications/notifications';
+import { GlobalService} from '../../services/global.services';
+import {Storage} from '@ionic/storage';
+// import { Camera, CameraOptions } from '@ionic-native/camera';
+
 
 
 
@@ -17,10 +21,17 @@ import {CreateEventPage} from './createEvant/createEvent'
     templateUrl: 'event.html'
 })
 export class EventPage {
+    
 
-    constructor(public navCtrl: NavController, public popoverCtrl: PopoverController) {
-
+    constructor(public navCtrl: NavController,
+                public popoverCtrl: PopoverController,
+                navParams: NavParams,
+                public storage: Storage,
+                public globalService: GlobalService)
+    {
+        
     }
+   
 
     goToCreateEvent() {
         this.navCtrl.push(CreateEventPage);
@@ -52,4 +63,5 @@ export class EventPage {
         let popover = this.popoverCtrl.create(WaitingPage);
         popover.present();
     }
+   
 }

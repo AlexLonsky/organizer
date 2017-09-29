@@ -77,7 +77,7 @@ export class LoginPage {
             "code": code
         };
         this.globalService.httpRequestPost(data, 'api/checkCode').then((res) => {
-            if(res.description.status =="OK") {
+            if(res.description || res.description.status =="OK") {
                 this.navCtrl.setRoot(EventPage);
                 var userToken = {token: res.description.auth_token};
                 this.storage.set('userToken', userToken).then(() => {

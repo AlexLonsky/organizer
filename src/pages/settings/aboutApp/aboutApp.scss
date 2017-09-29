@@ -1,0 +1,77 @@
+
+page-aboutApp{
+  h2.about {
+    font-size: 20px;
+    color: #0583ff;
+    margin-top: 1rem;
+  }
+  h1.nameApp {
+    text-align: center;
+    margin-top: 0;
+    font-weight: 900;
+    font-size: 2.6rem;
+    //padding: 0 7%;
+  }
+  .updateVersion span {
+    margin-right: 38%;
+  }
+  p.updateVersion {
+    //padding: 0 7%;
+  }
+  p.development {
+    text-align: center;
+  }
+  p.forPeople {
+    text-align: center;
+  }
+  //ion-buttons.bar-buttons.bar-buttons-md {
+  //  position: absolute;
+  //  bottom: 15px;
+  //  width: 93%;
+  //}
+
+}
+
+.scroll-content{
+  padding: 0 !important;
+}
+.main-view{
+  background: transparent;
+
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: .5;
+  background-color: #333;
+}
+.modal_content {
+  position: absolute;
+  top: calc(40% - (50%/2));
+  left: calc(25% - (50%/2));
+  right: 0;
+  width: 80%;
+  //height: 65%;
+  padding: 10px;
+  z-index: 100;
+  margin: 0 auto;
+  padding: 10px 20px;
+  color: #333;
+  background: #e8e8e8;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e8e8e8));
+  background: linear-gradient(to bottom, #fff 0%, #e8e8e8 100%);
+  border-radius: 2px;
+  -webkit-box-shadow: 0 2px 3px rgba(51, 51, 51, 0.35);
+  box-shadow: 0 2px 3px rgba(51, 51, 51, 0.35);
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  overflow: hidden;
+  min-height: 255px;
+}
+.main-view ion-item{
+  background: none;
+}

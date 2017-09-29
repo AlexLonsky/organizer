@@ -1,13 +1,41 @@
 <ion-header>
     <ion-navbar>
-        <button menuToggle>
-            <ion-icon name="menu"></ion-icon>
+        <button menuToggle ion-button>
+            <ion-icon name="menu" ></ion-icon>
+
         </button>
-        <ion-title>Calendar</ion-title>
+        <ion-title>Календарь</ion-title>
+
     </ion-navbar>
 </ion-header>
 
-<ion-content>
-    <h1>Calendar</h1>
-</ion-content>
+<!--<ion-content>-->
+    <!--<h1>Calendar</h1>-->
+    <!--<div>-->
+        <!--<ion-calendar ></ion-calendar>-->
+    <!--</div>-->
+<!--</ion-content>-->
 
+
+
+<ion-content class="has-header">
+    <ion-navbar color="primary">
+        <ion-title>{{viewTitle}}</ion-title>
+        <ion-buttons end>
+            <button ion-button [disabled]="isToday" (click)="today()">Today</button>
+            <button ion-button (click)="changeMode('month')">M</button>
+            <button ion-button (click)="changeMode('week')">W</button>
+            <button ion-button (click)="changeMode('day')">D</button>
+            <button ion-button (click)="loadEvents()">Load Events</button>
+        </ion-buttons>
+    </ion-navbar>
+    <calendar [eventSource]="eventSource"
+              [calendarMode]="calendar.mode"
+              [currentDate]="calendar.currentDate"
+              (onCurrentDateChanged)="onCurrentDateChanged($event)"
+              (onEventSelected)="onEventSelected($event)"
+              (onTitleChanged)="onViewTitleChanged($event)"
+              (onTimeSelected)="onTimeSelected($event)"
+              step="30">
+    </calendar>
+</ion-content>
